@@ -2,7 +2,7 @@
 //  Persistence.swift
 //  iChingRecordApp
 //
-//  Created by 黃肇祺 on 2022/10/2.
+//  Created on 2022/10/2.
 //
 
 import CoreData

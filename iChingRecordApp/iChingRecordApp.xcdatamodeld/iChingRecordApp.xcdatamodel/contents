@@ -1,9 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21G72" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="HexagramContent" representedClassName="HexagramContent" syncable="YES" codeGenerationType="class">
+        <attribute name="sentences" optional="YES" attributeType="String"/>
+    </entity>
     <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
+        <attribute name="contentFifth" optional="YES" attributeType="String"/>
+        <attribute name="contentFirst" optional="YES" attributeType="String"/>
+        <attribute name="contentFourth" optional="YES" attributeType="String"/>
+        <attribute name="contentSecond" optional="YES" attributeType="String"/>
+        <attribute name="contentSixth" optional="YES" attributeType="String"/>
+        <attribute name="contentThird" optional="YES" attributeType="String"/>
+        <attribute name="hexagramName" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="mainChange" optional="YES" attributeType="String"/>
+        <attribute name="mainContent" optional="YES" attributeType="String"/>
+        <attribute name="ninesChange" optional="YES" attributeType="String"/>
+        <attribute name="object" optional="YES" attributeType="String"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
     <elements>
-        <element name="Item" positionX="-63" positionY="-18" width="128" height="44"/>
+        <element name="Item" positionX="-63" positionY="-18" width="128" height="238"/>
+        <element name="HexagramContent" positionX="131.5625" positionY="22.10354614257812" width="128" height="58"/>
     </elements>
 </model>

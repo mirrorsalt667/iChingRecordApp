@@ -2,17 +2,19 @@
 //  ContentView.swift
 //  iChingRecordApp
 //
-//  Created by 黃肇祺 on 2022/10/2.
+//  Created on 2022/10/2.
 //
 
-import SwiftUI
 import CoreData
+import SwiftUI
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) private var viewContext
+    // core Data 變數
+    @Environment(\.managedObjectContext) private var coreDataTest
 
+    // item 內的型別是自己設定
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \Item.id, ascending: true)],
         animation: .default)
     private var items: FetchedResults<Item>
 
@@ -24,6 +26,7 @@ struct ContentView: View {
                         Text("Item at \(item.timestamp!, formatter: itemFormatter)")
                     } label: {
                         Text(item.timestamp!, formatter: itemFormatter)
+                        
                     }
                 }
                 .onDelete(perform: deleteItems)
@@ -44,11 +47,17 @@ struct ContentView: View {
 
     private func addItem() {
         withAnimation {
-            let newItem = Item(context: viewContext)
+            let newItem = Item(context: coreDataTest)
+            newItem.id = UUID()
+            let id = newItem.id
+            print("id -> ", id)
             newItem.timestamp = Date()
+            newItem.object = "0"
+            newItem.mainContent = "升"
+            
 
             do {
-                try viewContext.save()
+                try coreDataTest.save()
             } catch {
                 // Replace this implementation with code to handle the error appropriately.
                 // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
@@ -60,10 +69,10 @@ struct ContentView: View {
 
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
+            offsets.map { items[$0] }.forEach(coreDataTest.delete)
 
             do {
-                try viewContext.save()
+                try coreDataTest.save()
             } catch {
                 // Replace this implementation with code to handle the error appropriately.
                 // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
